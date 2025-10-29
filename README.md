@@ -2,8 +2,8 @@
 
 ## Project Overview
 
-This project involved the design, deployment, and validation of a comprehensive Security Information and Event Management (SIEM) lab environment to simulate, detect, and analyze security events across heterogeneous endpoints. The lab integrates open-source technologies including Wazuh SIEM, Suricata Network IDS, and attack simulation framework Metasploit.
-The objective was to build end-to-end security monitoring capabilities that closely mirror production Security Operations Center (SOC) environments, providing hands-on experience in log collection, event correlation, network threat detection, and adversary emulation using MITRE ATT&CK techniques.
+This project involved the design, deployment, and validation of a comprehensive Security Information and Event Management (SIEM) lab environment to simulate, detect, and analyze security events across endpoints. The lab integrates open-source technologies including Wazuh SIEM, Suricata Network IDS, and attack simulation frameworks Metasploit and MITRE Caldera.
+The objective was to build end-to-end security monitoring capabilities that closely mirror production Security Operations Center (SOC) environments and demonstrate personal hands-on experience in log collection, event correlation, network threat detection, and adversary emulation using MITRE ATT&CK techniques.
 
 ## Technologies Used
 
@@ -11,6 +11,7 @@ The objective was to build end-to-end security monitoring capabilities that clos
 - **Suricata 6.0**: Network intrusion detection system integrated with Wazuh for real-time alerting on network-based threats.
 - **Operating Systems**: Windows 11 and Ubuntu 24.04 LTS for agent deployment and endpoint monitoring.
 - **Metasploit Framework**: Penetration testing tool for simulated attack generation.
+- **MITRE Caldera**: Adversary emulation platform to replicate attacker behaviors based on MITRE ATT&CK framework.
 - **Virtualization**: VMWare Workstation to host lab virtual machines.
 
 ## Architecture and Design
@@ -20,9 +21,9 @@ The infrastructure comprises multiple virtual machines within an isolated homela
 - **Wazuh All-in-One Server**: Runs Wazuh Manager, Wazuh Indexer, and Dashboard services on Ubuntu Server.
 - **Windows Agent VM**: Hosts the Wazuh Agent and Sysmon for event logging.
 - **Linux Agent VM (Ubuntu)**: Runs Wazuh Agent and Suricata IDS for host and network event monitoring.
-- **Attacker VM (Kali Linux)**: Used for launching penetration tests and adversary emulation.
+- **Attacker VM (Kali Linux)**: Used for launching penetration tests and adversary emulation using Metasploit and MITRE Caldera.
 
-The network is configured via bridged adapters to allow communication between VMs while isolating the lab environment.
+The network is configured with host adapters to allow communication between VMs while isolating the lab environment.
 
 <img width="500" height="501" alt="image" src="https://github.com/user-attachments/assets/158ff6c9-357d-40cd-b556-28245d373e52" />
 
@@ -35,7 +36,7 @@ The network is configured via bridged adapters to allow communication between VM
 - Verified component status: Wazuh Manager, Indexer, and Dashboard.
 - Deployed Wazuh Agents on Windows and Linux VMs, with custom configurations to collect Windows Event Logs, Sysmon logs, and Linux system logs.
 
-<img width="2872" height="1528" alt="dashboard" src="https://github.com/user-attachments/assets/c88db0fd-750c-41e3-8aae-3856c4d2a7ae" />
+<img width="750" height="750" alt="dashboard" src="https://github.com/user-attachments/assets/c88db0fd-750c-41e3-8aae-3856c4d2a7ae" />
 
 
 
@@ -51,8 +52,8 @@ The network is configured via bridged adapters to allow communication between VM
 - Configured collection of enriched telemetry such as Sysmon logs on Windows for process creation, network connections, and command execution.
 - Collected Linux system logs including SSH authentication and syslog events.
 - Established log parsing and alerting rules within Wazuh to handle diverse data sources.
-<img width="2876" height="1667" alt="Screenshot_20251023_134149" src="https://github.com/user-attachments/assets/d84c0c7e-7a2e-48de-ad1d-213c6a0d26f8" />
-<img width="2876" height="1667" alt="wazuh-alerts" src="https://github.com/user-attachments/assets/34534283-dab7-4949-9101-ad685200099e" />
+<img width="750" height="750" alt="Screenshot_20251023_134149" src="https://github.com/user-attachments/assets/d84c0c7e-7a2e-48de-ad1d-213c6a0d26f8" />
+<img width="750" height="750" alt="wazuh-alerts" src="https://github.com/user-attachments/assets/34534283-dab7-4949-9101-ad685200099e" />
 
 
 ### Attack Simulation and Detection
@@ -60,8 +61,8 @@ The network is configured via bridged adapters to allow communication between VM
 - Conducted reconnaissance, brute force, and exploit simulations using Metasploit originating from the attacker VM, targeting the Windows agent. (MITRE ATT&CK mapping: T1110 – Brute Force (Credential Access))
 - Simulated an attacker gaining administrator permissions and downgrading the security of Windows client's SMB component. (MITRE ATT&CK mappings: T1499 – Endpoint Denial of Service (Impact) and T1021 – Remote Services (Lateral Movement / Initial Access))
 - Monitored and correlated alerts generated by simulated attacks in Wazuh dashboard.
-<img width="1300" height="8045" alt="wazuh-smb1" src="https://github.com/user-attachments/assets/0fa25b27-5e40-48ae-86a4-8ef53bfa99e2" />
-<img width="1435" height="839" alt="wazuh-smb1-2" src="https://github.com/user-attachments/assets/ed46d07f-4cf7-43fd-8417-e09566d141c1" />
+<img width="750" height="750" alt="wazuh-smb1" src="https://github.com/user-attachments/assets/0fa25b27-5e40-48ae-86a4-8ef53bfa99e2" />
+<img width="750" height="750" alt="wazuh-smb1-2" src="https://github.com/user-attachments/assets/ed46d07f-4cf7-43fd-8417-e09566d141c1" />
 
 
 ## Results and Findings
