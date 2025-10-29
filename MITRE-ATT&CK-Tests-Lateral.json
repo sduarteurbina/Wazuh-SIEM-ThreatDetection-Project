@@ -1,0 +1,658 @@
+{
+  "name": "{
+  "name": "MITRE ATT&CK Tests - Lateral",
+  "host_group": [
+    {
+      "paw": "qoerxy",
+      "sleep_min": 30,
+      "sleep_max": 60,
+      "watchdog": 0,
+      "group": "red",
+      "architecture": "amd64",
+      "platform": "windows",
+      "server": "http://192.168.56.101:8888",
+      "upstream_dest": "http://192.168.56.101:8888",
+      "username": "WINDOWS-CLIENT\\lab",
+      "location": "C:\\Users\\Public\\splunkd.exe",
+      "pid": 5264,
+      "ppid": 4844,
+      "trusted": true,
+      "executors": [
+        "cmd",
+        "psh",
+        "proc"
+      ],
+      "privilege": "Elevated",
+      "exe_name": "splunkd.exe",
+      "host": "Windows-Client",
+      "contact": "HTTP",
+      "proxy_receivers": {},
+      "proxy_chain": [],
+      "origin_link_id": "",
+      "deadman_enabled": true,
+      "available_contacts": [
+        "HTTP"
+      ],
+      "host_ip_addrs": [
+        "10.0.3.15",
+        "192.168.56.102"
+      ],
+      "display_name": "Windows-Client$WINDOWS-CLIENT\\lab",
+      "created": "2025-10-29T01:52:14Z",
+      "last_seen": "2025-10-29T02:00:37Z",
+      "links": [
+        {
+          "id": "e0ace80a-5800-4cc1-bdaf-8c317bd85b5a",
+          "paw": "qoerxy",
+          "command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
+          "plaintext_command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
+          "status": 0,
+          "score": 0,
+          "jitter": 0,
+          "decide": "2025-10-29T01:52:14Z",
+          "pin": 0,
+          "pid": "8564",
+          "facts": [],
+          "relationships": [],
+          "used": [],
+          "unique": "e0ace80a-5800-4cc1-bdaf-8c317bd85b5a",
+          "collect": "2025-10-29T01:52:14Z",
+          "finish": "2025-10-29T01:52:23Z",
+          "ability": {
+            "ability_id": "43b3754c-def4-4699-a673-1d85648fda6a",
+            "tactic": "defense-evasion",
+            "technique_name": "Indicator Removal on Host: Clear Command History",
+            "technique_id": "T1070.003",
+            "name": "Avoid logs",
+            "description": "Stop terminal from logging history",
+            "executors": [
+              {
+                "name": "sh",
+                "platform": "darwin",
+                "command": "> $HOME/.bash_history && unset HISTFILE",
+                "code": null,
+                "language": null,
+                "build_target": null,
+                "payloads": [],
+                "uploads": [],
+                "timeout": 60,
+                "parsers": [],
+                "cleanup": [],
+                "variations": [],
+                "additional_info": {}
+              },
+              {
+                "name": "sh",
+                "platform": "linux",
+                "command": "> $HOME/.bash_history && unset HISTFILE",
+                "code": null,
+                "language": null,
+                "build_target": null,
+                "payloads": [],
+                "uploads": [],
+                "timeout": 60,
+                "parsers": [],
+                "cleanup": [],
+                "variations": [],
+                "additional_info": {}
+              },
+              {
+                "name": "psh",
+                "platform": "windows",
+                "command": "Clear‑History;Clear",
+                "code": null,
+                "language": null,
+                "build_target": null,
+                "payloads": [],
+                "uploads": [],
+                "timeout": 60,
+                "parsers": [],
+                "cleanup": [],
+                "variations": [],
+                "additional_info": {}
+              }
+            ],
+            "requirements": [],
+            "privilege": null,
+            "repeatable": false,
+            "buckets": [
+              "defense‑evasion"
+            ],
+            "additional_info": {},
+            "access": {},
+            "singleton": false,
+            "plugin": "stockpile",
+            "delete_payload": true
+          },
+          "executor": {
+            "name": "psh",
+            "platform": "windows",
+            "command": "Clear‑History;Clear",
+            "code": null,
+            "language": null,
+            "build_target": null,
+            "payloads": [],
+            "uploads": [],
+            "timeout": 60,
+            "parsers": [],
+            "cleanup": [],
+            "variations": [],
+            "additional_info": {}
+          },
+          "cleanup": 0,
+          "visibility": {
+            "score": 50,
+            "adjustments": []
+          },
+          "host": "Windows‑Client",
+          "output": "False",
+          "deadman": false,
+          "agent_reported_time": "2025‑10‑29T01:52:17Z"
+        }
+      ],
+      "pending_contact": "HTTP"
+    }
+  ],
+  "start": "2025‑10‑29T01:57:50Z",
+  "steps": {
+    "qoerxy": {
+      "steps": [
+        {
+          "link_id": "b40c060e‑09a1‑4ff5‑a411‑a7c4786904d8",
+          "ability_id": "74d1b640‑7f1e‑4b36‑beba‑23a8228f39e0",
+          "command": "[System.Net.Dns]::GetHostByName($env:computerName).HostName",
+          "plaintext_command": "[System.Net.Dns]::GetHostByName($env:computerName).HostName",
+          "delegated": "2025‑10‑29T01:57:50Z",
+          "run": "2025‑10‑29T01:58:28Z",
+          "status": 0,
+          "platform": "windows",
+          "executor": "psh",
+          "pid": 8992,
+          "description": "Uses windows libraries to get FQDN of infected host",
+          "name": "Local FQDN",
+          "attack": {
+            "tactic": "discovery",
+            "technique_name": "host discovery",
+            "technique_id": "TA0007"
+          },
+          "agent_reported_time": "2025‑10‑29T01:58:19Z"
+        },
+        {
+          "link_id": "396c1d99‑425a‑4c5e‑ac1a‑2cca7386df7f",
+          "ability_id": "13379ae1‑d20e‑4162‑91f8‑320d78a35e7f",
+          "command": "Import‑Module .\\powerview.ps1;Get‑DomainComputer",
+          "plaintext_command": "Import‑Module .\\powerview.ps1;Get‑DomainComputer",
+          "delegated": "2025‑10‑29T01:58:30Z",
+          "run": "2025‑10‑29T01:59:15Z",
+          "status": 0,
+          "platform": "windows",
+          "executor": "psh",
+          "pid": 6400,
+          "description": "Use PowerView to query the Active Directory server for a list of computers in the Domain",
+          "name": "Discover local hosts",
+          "attack": {
+            "tactic": "discovery",
+            "technique_name": "Remote System Discovery",
+            "technique_id": "T1018"
+          },
+          "agent_reported_time": "2025‑10‑29T01:59:04Z"
+        }
+      ]
+    }
+  },
+  "finish": "2025‑10‑29T01:59:17Z",
+  "planner": "atomic",
+  "adversary": {
+    "adversary_id": "c220a8e6‑609c‑4d5b‑9e1c‑068ca01c2eec",
+    "name": "Lateral Movement - Certutil",
+    "description": "discovers lateral hosts,, encodes binary into certificate for stealthy lateral‑movement across the network",
+    "atomic_ordering": [
+      "74d1b640‑7f1e‑4b36‑beba‑23a8228f39e0",
+      "13379ae1‑d20e‑4162‑91f8‑320d78a35e7f",
+      "96d3c175‑5e58‑424c‑8350‑d7514b28a075"
+    ],
+    "objective": "495a9828‑cab1‑44dd‑a0ca‑66e58177d8cc",
+    "tags": [],
+    "has_repeatable_abilities": false,
+    "plugin": "stockpile"
+  },
+  "jitter": "2/8",
+  "objectives": {
+    "id": "495a9828‑cab1‑44dd‑a0ca‑66e58177d8cc",
+    "name": "default",
+    "description": "This is a default objective that runs forever.",
+    "goals": [
+      {
+        "target": "exhaustion",
+        "value": "complete",
+        "count": 1048576,
+        "operator": "==",
+        "achieved": false
+      }
+    ],
+    "percentage": 0
+  },
+  "facts": [
+    {
+      "unique": "file.sensitive.extensionwav",
+      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
+      "value": "wav",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "file.sensitive.extensionyml",
+      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
+      "value": "yml",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "file.sensitive.extensionpng",
+      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
+      "value": "png",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "server.malicious.urlkeyloggedsite.com",
+      "trait": "server.malicious.url",
+      "name": "server.malicious.url",
+      "value": "keyloggedsite.com",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "local.host.fqdnWindows‑Client",
+      "trait": "local.host.fqdn",
+      "name": "local.host.fqdn",
+      "value": "Windows‑Client",
+      "created": "2025‑10‑29T01:58:28Z",
+      "score": 1,
+      "source": "5f04d28e‑818a‑40dd‑a528‑592f7f274494",
+      "origin_type": "LEARNED",
+      "links": [
+        "b40c060e‑09a1‑4ff5‑a411‑a7c4786904d8"
+      ],
+      "relationships": [
+        "local.host.fqdn(Windows‑Client)"
+      ],
+      "limit_count": -1,
+      "collected_by": [
+        "qoerxy"
+      ],
+      "technique_id": "TA0007"
+    }
+  ],
+  "skipped_abilities": [
+    {
+      "qoerxy": [
+        {
+          "reason": "Fact dependency not fulfilled",
+          "reason_id": 3,
+          "ability_id": "96d3c175‑5e58‑424c‑8350‑d7514b28a075",
+          "ability_name": "Lateral Movement ‑ Certutil"
+        }
+      ]
+    }
+  ]
+}
+",
+  "host_group": [
+    {
+      "paw": "qoerxy",
+      "sleep_min": 30,
+      "sleep_max": 60,
+      "watchdog": 0,
+      "group": "red",
+      "architecture": "amd64",
+      "platform": "windows",
+      "server": "http://192.168.56.101:8888",
+      "upstream_dest": "http://192.168.56.101:8888",
+      "username": "WINDOWS-CLIENT\\lab",
+      "location": "C:\\Users\\Public\\splunkd.exe",
+      "pid": 5264,
+      "ppid": 4844,
+      "trusted": true,
+      "executors": [
+        "cmd",
+        "psh",
+        "proc"
+      ],
+      "privilege": "Elevated",
+      "exe_name": "splunkd.exe",
+      "host": "Windows-Client",
+      "contact": "HTTP",
+      "proxy_receivers": {},
+      "proxy_chain": [],
+      "origin_link_id": "",
+      "deadman_enabled": true,
+      "available_contacts": [
+        "HTTP"
+      ],
+      "host_ip_addrs": [
+        "10.0.3.15",
+        "192.168.56.102"
+      ],
+      "display_name": "Windows-Client$WINDOWS-CLIENT\\lab",
+      "created": "2025-10-29T01:52:14Z",
+      "last_seen": "2025-10-29T02:00:37Z",
+      "links": [
+        {
+          "id": "e0ace80a-5800-4cc1-bdaf-8c317bd85b5a",
+          "paw": "qoerxy",
+          "command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
+          "plaintext_command": "Q2xlYXItSGlzdG9yeTtDbGVhcg==",
+          "status": 0,
+          "score": 0,
+          "jitter": 0,
+          "decide": "2025-10-29T01:52:14Z",
+          "pin": 0,
+          "pid": "8564",
+          "facts": [],
+          "relationships": [],
+          "used": [],
+          "unique": "e0ace80a-5800-4cc1-bdaf-8c317bd85b5a",
+          "collect": "2025-10-29T01:52:14Z",
+          "finish": "2025-10-29T01:52:23Z",
+          "ability": {
+            "ability_id": "43b3754c-def4-4699-a673-1d85648fda6a",
+            "tactic": "defense-evasion",
+            "technique_name": "Indicator Removal on Host: Clear Command History",
+            "technique_id": "T1070.003",
+            "name": "Avoid logs",
+            "description": "Stop terminal from logging history",
+            "executors": [
+              {
+                "name": "sh",
+                "platform": "darwin",
+                "command": "> $HOME/.bash_history && unset HISTFILE",
+                "code": null,
+                "language": null,
+                "build_target": null,
+                "payloads": [],
+                "uploads": [],
+                "timeout": 60,
+                "parsers": [],
+                "cleanup": [],
+                "variations": [],
+                "additional_info": {}
+              },
+              {
+                "name": "sh",
+                "platform": "linux",
+                "command": "> $HOME/.bash_history && unset HISTFILE",
+                "code": null,
+                "language": null,
+                "build_target": null,
+                "payloads": [],
+                "uploads": [],
+                "timeout": 60,
+                "parsers": [],
+                "cleanup": [],
+                "variations": [],
+                "additional_info": {}
+              },
+              {
+                "name": "psh",
+                "platform": "windows",
+                "command": "Clear‑History;Clear",
+                "code": null,
+                "language": null,
+                "build_target": null,
+                "payloads": [],
+                "uploads": [],
+                "timeout": 60,
+                "parsers": [],
+                "cleanup": [],
+                "variations": [],
+                "additional_info": {}
+              }
+            ],
+            "requirements": [],
+            "privilege": null,
+            "repeatable": false,
+            "buckets": [
+              "defense‑evasion"
+            ],
+            "additional_info": {},
+            "access": {},
+            "singleton": false,
+            "plugin": "stockpile",
+            "delete_payload": true
+          },
+          "executor": {
+            "name": "psh",
+            "platform": "windows",
+            "command": "Clear‑History;Clear",
+            "code": null,
+            "language": null,
+            "build_target": null,
+            "payloads": [],
+            "uploads": [],
+            "timeout": 60,
+            "parsers": [],
+            "cleanup": [],
+            "variations": [],
+            "additional_info": {}
+          },
+          "cleanup": 0,
+          "visibility": {
+            "score": 50,
+            "adjustments": []
+          },
+          "host": "Windows‑Client",
+          "output": "False",
+          "deadman": false,
+          "agent_reported_time": "2025‑10‑29T01:52:17Z"
+        }
+      ],
+      "pending_contact": "HTTP"
+    }
+  ],
+  "start": "2025‑10‑29T01:57:50Z",
+  "steps": {
+    "qoerxy": {
+      "steps": [
+        {
+          "link_id": "b40c060e‑09a1‑4ff5‑a411‑a7c4786904d8",
+          "ability_id": "74d1b640‑7f1e‑4b36‑beba‑23a8228f39e0",
+          "command": "[System.Net.Dns]::GetHostByName($env:computerName).HostName",
+          "plaintext_command": "[System.Net.Dns]::GetHostByName($env:computerName).HostName",
+          "delegated": "2025‑10‑29T01:57:50Z",
+          "run": "2025‑10‑29T01:58:28Z",
+          "status": 0,
+          "platform": "windows",
+          "executor": "psh",
+          "pid": 8992,
+          "description": "Uses windows libraries to get FQDN of infected host",
+          "name": "Local FQDN",
+          "attack": {
+            "tactic": "discovery",
+            "technique_name": "host discovery",
+            "technique_id": "TA0007"
+          },
+          "agent_reported_time": "2025‑10‑29T01:58:19Z"
+        },
+        {
+          "link_id": "396c1d99‑425a‑4c5e‑ac1a‑2cca7386df7f",
+          "ability_id": "13379ae1‑d20e‑4162‑91f8‑320d78a35e7f",
+          "command": "Import‑Module .\\powerview.ps1;Get‑DomainComputer",
+          "plaintext_command": "Import‑Module .\\powerview.ps1;Get‑DomainComputer",
+          "delegated": "2025‑10‑29T01:58:30Z",
+          "run": "2025‑10‑29T01:59:15Z",
+          "status": 0,
+          "platform": "windows",
+          "executor": "psh",
+          "pid": 6400,
+          "description": "Use PowerView to query the Active Directory server for a list of computers in the Domain",
+          "name": "Discover local hosts",
+          "attack": {
+            "tactic": "discovery",
+            "technique_name": "Remote System Discovery",
+            "technique_id": "T1018"
+          },
+          "agent_reported_time": "2025‑10‑29T01:59:04Z"
+        }
+      ]
+    }
+  },
+  "finish": "2025‑10‑29T01:59:17Z",
+  "planner": "atomic",
+  "adversary": {
+    "adversary_id": "c220a8e6‑609c‑4d5b‑9e1c‑068ca01c2eec",
+    "name": "Lateral Movement - Certutil",
+    "description": "discovers lateral hosts,, encodes binary into certificate for stealthy lateral‑movement across the network",
+    "atomic_ordering": [
+      "74d1b640‑7f1e‑4b36‑beba‑23a8228f39e0",
+      "13379ae1‑d20e‑4162‑91f8‑320d78a35e7f",
+      "96d3c175‑5e58‑424c‑8350‑d7514b28a075"
+    ],
+    "objective": "495a9828‑cab1‑44dd‑a0ca‑66e58177d8cc",
+    "tags": [],
+    "has_repeatable_abilities": false,
+    "plugin": "stockpile"
+  },
+  "jitter": "2/8",
+  "objectives": {
+    "id": "495a9828‑cab1‑44dd‑a0ca‑66e58177d8cc",
+    "name": "default",
+    "description": "This is a default objective that runs forever.",
+    "goals": [
+      {
+        "target": "exhaustion",
+        "value": "complete",
+        "count": 1048576,
+        "operator": "==",
+        "achieved": false
+      }
+    ],
+    "percentage": 0
+  },
+  "facts": [
+    {
+      "unique": "file.sensitive.extensionwav",
+      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
+      "value": "wav",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "file.sensitive.extensionyml",
+      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
+      "value": "yml",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "file.sensitive.extensionpng",
+      "trait": "file.sensitive.extension",
+      "name": "file.sensitive.extension",
+      "value": "png",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "server.malicious.urlkeyloggedsite.com",
+      "trait": "server.malicious.url",
+      "name": "server.malicious.url",
+      "value": "keyloggedsite.com",
+      "created": "2025‑10‑28T13:07:17Z",
+      "score": 1,
+      "source": "ed32b9c3‑9593‑4c33‑b0db‑e2007315096b",
+      "origin_type": "IMPORTED",
+      "links": [],
+      "relationships": [],
+      "limit_count": -1,
+      "collected_by": [],
+      "technique_id": ""
+    },
+    {
+      "unique": "local.host.fqdnWindows‑Client",
+      "trait": "local.host.fqdn",
+      "name": "local.host.fqdn",
+      "value": "Windows‑Client",
+      "created": "2025‑10‑29T01:58:28Z",
+      "score": 1,
+      "source": "5f04d28e‑818a‑40dd‑a528‑592f7f274494",
+      "origin_type": "LEARNED",
+      "links": [
+        "b40c060e‑09a1‑4ff5‑a411‑a7c4786904d8"
+      ],
+      "relationships": [
+        "local.host.fqdn(Windows‑Client)"
+      ],
+      "limit_count": -1,
+      "collected_by": [
+        "qoerxy"
+      ],
+      "technique_id": "TA0007"
+    }
+  ],
+  "skipped_abilities": [
+    {
+      "qoerxy": [
+        {
+          "reason": "Fact dependency not fulfilled",
+          "reason_id": 3,
+          "ability_id": "96d3c175‑5e58‑424c‑8350‑d7514b28a075",
+          "ability_name": "Lateral Movement ‑ Certutil"
+        }
+      ]
+    }
+  ]
+}
